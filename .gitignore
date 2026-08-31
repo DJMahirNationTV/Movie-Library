@@ -1,8 +1,49 @@
-#
 .idea
 *.iml
 
-#backend
+
+### Maven ###
+backend/target/
+backend/pom.xml.tag
+backend/pom.xml.releaseBackup
+backend/pom.xml.versionsBackup
+backend/pom.xml.next
+backend/release.properties
+backend/dependency-reduced-pom.xml
+backend/buildNumber.properties
+backend/.mvn/timing.properties
+# https://github.com/takari/maven-wrapper#usage-without-binary-jar
+backend/.mvn
+
+# Eclipse m2e generated files
+# Eclipse Core
+backend/.project
+# JDT-specific (Eclipse Java Development Tools)
+backend/.classpath
 
 
-#fronend
+
+### react ###
+frontend/.DS_*
+frontend/*.log
+frontend/logs
+frontend/**/*.backup.*
+frontend/**/*.back.*
+
+frontend/node_modules
+frontend/bower_components
+
+frontend/*.sublime*
+
+frontend/psd
+frontend/thumb
+frontend/sketch
+
+### Vuejs ###
+# Recommended template: Node.gitignore
+
+frontend/node_modules/
+frontend/dist/
+frontend/npm-debug.log
+frontend/yarn-error.log
+frontend/.env

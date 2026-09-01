@@ -27,6 +27,8 @@ jobs:
       - name: Build mit Maven
         run: mvn -B package # oder mvn verify
         working-directory: backend
+        env:
+          SPRING_DATA_MONGODB_URI: ${{ secrets.SPRING_DATA_MONGODB_URI }}
 
       - name: SonarCloud Analyse
         run: mvn sonar:sonar -B

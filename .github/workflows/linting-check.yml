@@ -26,8 +26,10 @@ jobs:
 
       - name: Build mit Maven
         run: mvn -B package # oder mvn verify
+        working-directory: backend
 
       - name: SonarCloud Analyse
         run: mvn sonar:sonar -B
+        working-directory: backend
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}

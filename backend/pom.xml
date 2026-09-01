@@ -115,16 +115,6 @@
                     <fork>true</fork>
                 </configuration>
             </plugin>
-
-            <!-- Surefire Plugin ohne Anführungszeichen -->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <version>3.5.6</version>
-                <configuration>
-                    <jvm>C:/Program Files/Java/jdk-25.0.3/bin/java</jvm>
-                </configuration>
-            </plugin>
         </plugins>
     </build>
 

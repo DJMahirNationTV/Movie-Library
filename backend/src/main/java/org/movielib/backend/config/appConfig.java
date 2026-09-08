@@ -8,7 +8,7 @@ import org.springframework.web.client.RestClient;
 @Configuration
 public class appConfig {
 
-    @Value("${omdb.api.base-url:http://www.omdbapi.com/}") // Fetch the API URL from application.properties
+    @Value("${omdb.api.base-url:https://www.omdbapi.com}") // Fetch the API URL from application.properties
     private String omdbBaseUrl;
 
     @Bean

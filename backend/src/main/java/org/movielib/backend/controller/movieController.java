@@ -1,22 +1,27 @@
 package org.movielib.backend.controller;
 
-import org.movielib.backend.dto.omdbMovieResponse;
-import org.movielib.backend.service.movieService;
-import org.springframework.http.ResponseEntity;
+import lombok.RequiredArgsConstructor;
+import org.movielib.backend.model.Movie;
+import org.movielib.backend.service.MovieService;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
 
 @RestController
 @RequestMapping("/api/movies")
-@CrossOrigin(origins = "http://localhost:5173") // for now, I would say, its 5173, but we can change it later...
-public class movieController {
-    private final movieService movieService;
+@RequiredArgsConstructor
+public class MovieController {
 
-    public movieController(movieService movieService) {
-        this.movieService = movieService;
+    private final MovieService movieService;
+
+    @GetMapping
+    public List<Movie> getAllMovies() {
+        return movieService.getAllMovies();
     }
-    @GetMapping("/{imdbId}")
-    public ResponseEntity<omdbMovieResponse> getMovie(@PathVariable String imdbId) {
-        omdbMovieResponse movie = movieService.getMovieByImdbId(imdbId);
-        return ResponseEntity.ok(movie);
+
+    @PostMapping
+    public Movie addMovie(@RequestBody Movie movie) {
+        return movieService.addMovie(movie);
     }
 }

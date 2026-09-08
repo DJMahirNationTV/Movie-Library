@@ -19,6 +19,8 @@ public class MovieService {
     // die IDs haben 7-8 Ziffern, daher das Regex Muster :) (ansonnsten kann man das entfernen, falls eine ID mehr hat)
     private static final Pattern IMDB_ID_PATTERN = Pattern.compile("^tt\\d{7,8}$");
 
+    private static final Pattern IMDB_ID_PATTERN = Pattern.compile("^tt\\d{7,8}$");
+
     private final MovieRepository movieRepository;
     private final RestClient omdbRestClient;
 

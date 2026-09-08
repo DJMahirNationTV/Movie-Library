@@ -10,4 +10,9 @@ class BackendApplicationTests {
     void contextLoads() {
     }
 
+    @Test
+    void mainMethodStarts() {
+        // Ruft die main-Methode auf, um die Zeilenabdeckung zu erfüllen
+        BackendApplication.main(new String[] {});
+    }
 }

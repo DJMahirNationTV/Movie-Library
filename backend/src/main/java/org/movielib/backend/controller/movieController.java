@@ -12,7 +12,7 @@ import java.util.List;
 @RequestMapping("/api/movies")
 @RequiredArgsConstructor
 public class MovieController {
-// uiashd
+
     private final MovieService movieService;
 
     @GetMapping

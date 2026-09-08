@@ -30,11 +30,12 @@ public class MovieController {
 
     @PostMapping
     public Movie addMovie(@RequestBody Movie movie) {
-        return movieService.addMovie(movie);
+        return movieService.addMovie(movie); // TODO: Das wäre etwas für die Watchlist bzw. Favoriten eines Nutzers, daher müsste man das noch erweitern
     }
 
     @GetMapping("/omdb/{imdbId}")
     public ResponseEntity<omdbMovieResponse> getOmdbMovie(@PathVariable String imdbId) {
+        // Der holten sich die Daten von der OMDB API und gibt sie mit einem "return" zurück
         return ResponseEntity.ok(movieService.fetchMovieFromOmdb(imdbId));
     }
 }

@@ -16,7 +16,7 @@ import java.util.regex.Pattern;
 @Service
 @RequiredArgsConstructor
 public class MovieService {
-
+    // die IDs haben 7-8 Ziffern, daher das Regex Muster :) (ansonnsten kann man das entfernen, falls eine ID mehr hat)
     private static final Pattern IMDB_ID_PATTERN = Pattern.compile("^tt\\d{7,8}$");
 
     private final MovieRepository movieRepository;
@@ -26,18 +26,18 @@ public class MovieService {
     private String omdbApiKey;
 
     public List<Movie> getAllMovies() {
-        return movieRepository.findAll();
+        return movieRepository.findAll(); // Der holt sich alle Filme aus der API
     }
 
     public Movie addMovie(Movie movie) {
-        return movieRepository.save(movie);
+        return movieRepository.save(movie); // Der speichert den Film in der Datenbank
     }
 
     public omdbMovieResponse fetchMovieFromOmdb(String imdbId) {
         if (imdbId == null || !IMDB_ID_PATTERN.matcher(imdbId).matches()) {
             throw new ResponseStatusException(
                     HttpStatus.BAD_REQUEST,
-                    "Invalid IMDb ID format. Expected values like tt0433386."
+                    "Ungültige ID, bitte eine gültige IMDB-ID im Format 'tt1234567' angeben."
             );
         }
 

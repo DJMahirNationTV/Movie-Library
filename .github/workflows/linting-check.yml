@@ -2,7 +2,7 @@ name: Sonar-Cloud-Backend
 
 on:
   push:
-    branches: [main] # oder main
+    branches: [main]
   pull_request:
     branches: [main]
 

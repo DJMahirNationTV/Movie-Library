@@ -17,8 +17,8 @@ jobs:
       - name: Set up JDK 25
         uses: actions/setup-java@v3
         with:
-          distribution: "temurin" # oder 'sulu'
-          java-version: "25" # an Deine Java-Version anpassen
+          distribution: "temurin"
+          java-version: "25"
 
       - name: Wechsel in das Backend-Verzeichnis
         run: echo "Working Directory set"

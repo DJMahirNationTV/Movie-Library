@@ -27,8 +27,8 @@ public class MovieController {
         return movieService.addMovie(movie);
     }
 
-    @GetMapping("/{imdbId}")
-    public ResponseEntity<omdbMovieResponse> getMovieByImdbId(@PathVariable String imdbId) {
+    @GetMapping("/omdb/{imdbId}")
+    public ResponseEntity<omdbMovieResponse> getOmdbMovie(@PathVariable String imdbId) {
         omdbMovieResponse movie = movieService.fetchMovieFromOmdb(imdbId);
         return ResponseEntity.ok(movie);
     }

@@ -1,29 +1,23 @@
 package org.movielib.backend.service;
 
-import org.movielib.backend.dto.omdbMovieResponse;
-import org.springframework.beans.factory.annotation.Value;
+import lombok.RequiredArgsConstructor;
+import org.movielib.backend.model.Movie;
+import org.movielib.backend.repository.MovieRepository;
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.RestClient;
+
+import java.util.List;
 
 @Service
-public class movieService {
+@RequiredArgsConstructor
+public class MovieService {
 
-    private final RestClient omdbRestClient;
+    private final MovieRepository movieRepository;
 
-    @Value("${omdb.api.key}") // API Key from Properties
-    private String apiKey;
-
-    public movieService(RestClient omdbRestClient) {
-        this.omdbRestClient = omdbRestClient;
+    public List<Movie> getAllMovies() {
+        return movieRepository.findAll();
     }
 
-    public omdbMovieResponse getMovieByImdbId(String imdbId) {
-        return omdbRestClient.get()
-                .uri(uriBuilder -> uriBuilder
-                        .queryParam("i", imdbId)
-                        .queryParam("apikey", apiKey)
-                        .build())
-                .retrieve()
-                .body(omdbMovieResponse.class);
+    public Movie addMovie(Movie movie) {
+        return movieRepository.save(movie);
     }
 }

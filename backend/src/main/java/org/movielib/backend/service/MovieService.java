@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.movielib.backend.dto.omdbMovieResponse;
 import org.movielib.backend.model.Movie;
 import org.movielib.backend.repository.MovieRepository;
+import org.movielib.backend.dto.omdbSearchResponse;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -23,7 +24,7 @@ public class MovieService {
     private final MovieRepository movieRepository;
     private final RestClient omdbRestClient;
 
-    @Value("${omdb.api.key:}")
+    @Value("${omdb.api.key}")
     private String omdbApiKey;
 
     public List<Movie> getAllMovies() {
@@ -32,6 +33,16 @@ public class MovieService {
 
     public Movie addMovie(Movie movie) {
         return movieRepository.save(movie); // Der speichert den Film in der Datenbank
+    }
+
+    public omdbSearchResponse searchMoviesFromOmdb(String query) {
+        return omdbRestClient.get()
+                .uri(uriBuilder -> uriBuilder
+                        .queryParam("apikey", omdbApiKey)
+                        .queryParam("s", query)
+                        .build())
+                .retrieve()
+                .body(omdbSearchResponse.class);
     }
 
     public omdbMovieResponse fetchMovieFromOmdb(String imdbId) {

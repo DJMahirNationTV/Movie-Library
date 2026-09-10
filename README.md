@@ -1,4 +1,5 @@
-# Java Setup
-incase you have a older Version on your System (e.g. Javs 21), you can use the following command to execute Java-25 Command:
+Schema:
+`https://movie-library-teamproject.onrender.com/api/movies/omdb/IMDB_ID`
 
-`mvn package "-Dmaven.compiler.fork=true" "-Dmaven.compiler.executable=C:\Program Files\Java\jdk-25.0.3\bin\javac"`
+## Example:
+`https://movie-library-teamproject.onrender.com/api/movies/omdb/tt22084616`

@@ -4,6 +4,23 @@ import api from './axios';
 export interface Movie {
     id?: string; //mit ? damit kein Fehler wenn leer
     title: string;
+    year: string;
+    poster?: string; //mit ? damit kein Fehler wenn leer
+}
+
+interface omdbSearchItem {
+    Title: string;
+    Year: string;
+    imdbID: string;
+    Type: string;
+    Poster: string;
+}
+
+interface omdbSearchResponse {
+    Search?: omdbSearchItem[];
+    totalResults?: string;
+    Response: string;
+    Error?: string;
 }
 
 interface omdbSearchItem {

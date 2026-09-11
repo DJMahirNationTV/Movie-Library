@@ -9,7 +9,6 @@ const backendUrl = process.env.BACKEND_URL || "http://localhost:8080"; // || bed
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react(), tailwindcss()],
-  plugins: [react(), tailwindcss()],
   server: {
     proxy: {
       "/api": backendUrl,

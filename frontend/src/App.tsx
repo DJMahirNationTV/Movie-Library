@@ -71,7 +71,6 @@ function App() {
 
   useEffect(() => {
     loadSavedMovies();
-    console.log('test');
   }, []);
 
   // Suche in der OMDb über dein Spring Boot Backend ausführen

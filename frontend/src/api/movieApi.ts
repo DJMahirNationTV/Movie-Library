@@ -6,22 +6,48 @@ export interface Movie {
     title: string;
     year: string;
     poster?: string; //mit ? damit kein Fehler wenn leer
+    rated?: string;
+    released?: string;
+    runtime?: string;
+    genre?: string;
+    director?: string;
+    writer?: string;
+    actors?: string;
+    plot?: string;
+    language?: string;
+    awards?: string;
+    rating?: string;
+    metascore?: string;
+    imdbRating?: string;
+    imdbVotes?: string;
+    boxOffice?: string;
 }
 
-interface omdbSearchItem {
+  export interface MovieDetails {
     Title: string;
     Year: string;
+    Rated: string;
+    Released: string;
+    Runtime: string;
+    Genre: string;
+    Director: string;
+    Writer: string;
+    Actors: string;
+    Plot: string;
+    Language: string;
+    Country: string;
+    Awards: string;
+    Poster: string;
+    Ratings: { Source: string; Value: string }[];
+    Metascore: string;
+    imdbRating: string;
+    imdbVotes: string;
     imdbID: string;
     Type: string;
-    Poster: string;
-}
-
-interface omdbSearchResponse {
-    Search?: omdbSearchItem[];
-    totalResults?: string;
+    BoxOffice: string;
     Response: string;
-    Error?: string;
-}
+    Error: string | null;
+  }
 
 // GET: Alle Filme vom Backend abrufen
 // weil api aufruf lange dauert, warte einen moment und blockier nicht,
@@ -52,6 +78,11 @@ export const searchMovies = async (query: string): Promise<Movie[]> => {
 // 2. Alle gespeicherten Filme aus der eigenen Datenbank abrufen
 export const getAllMovies = async (): Promise<Movie[]> => {
   const response = await api.get<Movie[]>('/movies/all');
+  return response.data;
+};
+
+export const getMovieDetails = async (imdbId: string): Promise<MovieDetails> => {
+  const response = await api.get<MovieDetails>(`/movies/omdb/${imdbId}`);
   return response.data;
 };
 

@@ -23,21 +23,6 @@ interface omdbSearchResponse {
     Error?: string;
 }
 
-interface omdbSearchItem {
-    Title: string;
-    Year: string;
-    imdbID: string;
-    Type: string;
-    Poster: string;
-}
-
-interface omdbSearchResponse {
-    Search?: omdbSearchItem[];
-    totalResults?: string;
-    Response: string;
-    Error?: string;
-}
-
 // GET: Alle Filme vom Backend abrufen
 // weil api aufruf lange dauert, warte einen moment und blockier nicht,
 // eine ein array movie wir aufgerufen
